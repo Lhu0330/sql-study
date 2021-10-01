@@ -161,9 +161,31 @@ where salary not between 7000 and 17000;
 
 -- null은 0이나 공백이 아닌 입력되지 않은 값이다
 
--- 예제1
+-- order by 정렬순서를 지정 asc 오름차순(생략가능) desc 내림차순
+--select *
+--from employees
+--order by last_name
 
+--select *
+--from employees
+--order by employee_id, department_id;
 
+-- 별칭으로 정렬
+--select department_id, last_name, salary*10 연봉
+--from employees
+--order by 연봉 desc;
 
+--예제 1
+--select employee_id, first_name, last_name
+--from employees
+--order by employee_id desc
 
+--예제2
+--select *
+--from employees 
+--where job_id like '%CLERK%' order by salary asc
 
+--예제3
+--select *
+--from employees
+--where employee_id between 120 and 150 order by department_id, salary;
