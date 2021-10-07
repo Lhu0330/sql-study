@@ -1,5 +1,5 @@
--- ê·¸ë£¹í•¨ìˆ˜(ë‹¤ì¤‘í–‰ í•¨ìˆ˜, ì§‘ê³„í•¨ìˆ˜)
---select round(avg(salary))í‰ê· ê°’, max(salary) ìµœëŒ€ê°’, min(salary) ìµœì†Œê°’, sum(salary) í•©ê³„, count(salary) ì¹´ìš´íŠ¸
+-- ±×·ìÇÔ¼ö(´ÙÁßÇà ÇÔ¼ö, Áı°èÇÔ¼ö)
+--select round(avg(salary))Æò±Õ°ª, max(salary) ÃÖ´ë°ª, min(salary) ÃÖ¼Ò°ª, sum(salary) ÇÕ°è, count(salary) Ä«¿îÆ®
 --from employees
 --where job_id like '%REP%';
 
@@ -9,86 +9,86 @@
 --select count (*)
 --from employees where department_id = 80;
 
--- nullê°’ì„ ì œì™¸í•˜ê³  ê³„ì‚°í•˜ë‹¤.(ì˜ˆì™¸ count(*))
+-- null°ªÀ» Á¦¿ÜÇÏ°í °è»êÇÏ´Ù.(¿¹¿Ü count(*))
 --select count(department_id)
---from employees; --1ëª…ì´ ë¶€ì„œê°€ ì—†ìŒ(nullê°’ í•˜ë‚˜ìˆìŒ)
+--from employees; --1¸íÀÌ ºÎ¼­°¡ ¾øÀ½(null°ª ÇÏ³ªÀÖÀ½)
 
 --select count(distinct department_id)
---from employees; --ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ë¶€ì„œì˜ ê°œìˆ˜
+--from employees; --Áßº¹µÇÁö ¾Ê´Â ºÎ¼­ÀÇ °³¼ö
 
 --select avg(commission_pct)
 --from employees;
 
--- group by ì ˆ: íŠ¹ì •ê·¸ë£¹ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì„œ ê·¸ë£¹í•¨ìˆ˜ ì‚¬ìš©
---select department_id ë¶€ì„œë²ˆí˜¸, round(avg(salary)) í‰ê· ê¸‰ì—¬
+-- group by Àı: Æ¯Á¤±×·ìÀ¸·Î ³ª´©¾î¼­ ±×·ìÇÔ¼ö »ç¿ë
+--select department_id ºÎ¼­¹øÈ£, round(avg(salary)) Æò±Õ±Ş¿©
 --from employees
 --group by department_id
---order by ë¶€ì„œë²ˆí˜¸;
+--order by ºÎ¼­¹øÈ£;
 
---ì˜ˆì œ1
+--¿¹Á¦1
 --select
 --    department_id,
---    count(department_id) ì‚¬ì›ìˆ˜,
---    max(salary) ìµœê³ ê¸‰ì—¬,
---    min(salary) ìµœì†Œê¸‰ì—¬,
---    sum(salary) ê¸‰ì—¬í•©ê³„,
---    round(avg(salary)) í‰ê· ê¸‰ì—¬
+--    count(department_id) »ç¿ø¼ö,
+--    max(salary) ÃÖ°í±Ş¿©,
+--    min(salary) ÃÖ¼Ò±Ş¿©,
+--    sum(salary) ±Ş¿©ÇÕ°è,
+--    round(avg(salary)) Æò±Õ±Ş¿©
 --from employees
 --group by department_id
---order by ê¸‰ì—¬í•©ê³„ desc;
+--order by ±Ş¿©ÇÕ°è desc;
 
---ì˜ˆì œ 2
+--¿¹Á¦ 2
 --select 
---    department_id ë¶€ì„œë²ˆí˜¸,
---    job_id ì§ì—…,
---    manager_id ìƒì‚¬ë²ˆí˜¸,
---    sum(salary) ì›”ê¸‰í•©ê³„,
---    count(manager_id) ì§ì›ìˆ˜    
+--    department_id ºÎ¼­¹øÈ£,
+--    job_id Á÷¾÷,
+--    manager_id »ó»ç¹øÈ£,
+--    sum(salary) ¿ù±ŞÇÕ°è,
+--    count(manager_id) Á÷¿ø¼ö    
 --from employees
 --group by department_id, job_id, manager_id
 --order  by department_id;
 
---ì˜ˆì œ 3
+--¿¹Á¦ 3
 --select
---    round(avg(max(salary))) ë¶€ì„œë³„ìµœê³ ì›”ê¸‰í‰ê· ,
---    round(avg(min(salary))) ë¶€ì„œë³„ìµœì €ì›”ê¸‰í‰ê· 
+--    round(avg(max(salary))) ºÎ¼­º°ÃÖ°í¿ù±ŞÆò±Õ,
+--    round(avg(min(salary))) ºÎ¼­º°ÃÖÀú¿ù±ŞÆò±Õ
 --from employees
 --group by department_id;
 
--- ê·¸ë£¹í•¨ìˆ˜ì˜ ì¡°ê±´ì ˆ having
---select department_id ë¶€ì„œëª…, count(*) ì‚¬ì›ìˆ˜
+-- ±×·ìÇÔ¼öÀÇ Á¶°ÇÀı having
+--select department_id ºÎ¼­¸í, count(*) »ç¿ø¼ö
 --from employees
 --group by department_id
 --having count(*) > 5;
 
---ì˜ˆì œ 1
+--¿¹Á¦ 1
 --select
---    job_id ì§ì¢…,
---    sum(salary) ì›”ê¸‰í•©ê³„
+--    job_id Á÷Á¾,
+--    sum(salary) ¿ù±ŞÇÕ°è
 --from employees
 --group by job_id
 --having 
 --    avg(salary) > 10000 and
 --    job_id != 'AC_MGR'
---order by ì›”ê¸‰í•©ê³„ desc;
+--order by ¿ù±ŞÇÕ°è desc;
 
---ì˜ˆì œ 2
+--¿¹Á¦ 2
 --select 
---    department_id ë¶€ì„œë²ˆí˜¸,
---    round(avg(salary)) í‰ê· ê¸‰ì—¬
+--    department_id ºÎ¼­¹øÈ£,
+--    round(avg(salary)) Æò±Õ±Ş¿©
 --from employees
 --group by department_id
 --having 
 --    avg(salary) <= 7000 and
 --    department_id != 40;
 
---ì˜ˆì œ 3
+--¿¹Á¦ 3
 select 
     job_id,
-    sum(salary) ê¸‰ì—¬ì´ì•¡
+    sum(salary) ±Ş¿©ÃÑ¾×
 from employees
-where job_id != '%REP%'
+where job_id not like '%REP%'
 group by job_id
-having 
+having
     sum(salary) >= 13000
-order by ê¸‰ì—¬ì´ì•¡ desc;
+order by ±Ş¿©ÃÑ¾× desc;
