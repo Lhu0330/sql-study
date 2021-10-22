@@ -62,10 +62,23 @@
 --order by 1;
 
 --예제
-select 
-    salary,
-    round(salary/30, 0) 정수,
-    round(salary/30, 1) "소수1",
-    round(salary/30, -1) "10의자리"
-from employees
+--select 
+--    salary,
+--    round(salary/30, 0) 정수,
+--    round(salary/30, 1) "소수1",
+--    round(salary/30, -1) "10의자리"
+--from employees
 
+--예제 1
+select 
+    employee_id,
+    first_name,
+    last_name,
+    salary,
+    case
+        when salary >= 9000 then '상위급여'
+        when salary >= 6000 then '중위급여'
+        else '하위급여'
+    end 급여수준
+from employees
+where job_id = 'IT_PROG';
