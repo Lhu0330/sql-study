@@ -86,4 +86,61 @@ select first_name, job_id, salary, department_id
 from employees
 where (job_id, salary) in (select job_id, min(salary) from employees group by job_id)
 order by salary desc;
-    
+
+--집합
+--union 합집합: 중복을 제거한다.
+select employee_id, job_id
+from employees
+union
+select employee_id, job_id
+from job_history;
+
+--union all 합집합 : 두개의 셀렉트문의 결과를 합친다.
+select employee_id, job_id
+from employees
+union all
+select employee_id, job_id
+from job_history;
+
+--intersect 교집합
+select employee_id, job_id
+from employees
+intersect
+select employee_id, job_id
+from job_history;
+
+--minus 차집합
+select employee_id, job_id
+from employees
+minus
+select employee_id, job_id
+from job_history;
+
+--예제
+select department_id
+from employees
+union 
+select department_id
+from departments;
+
+--예제
+select department_id
+from employees
+union all
+select department_id
+from departments;
+
+--예제
+select department_id
+from employees
+intersect 
+select department_id
+from departments;
+
+
+--예제
+select department_id
+from departments
+minus 
+select department_id
+from employees;
